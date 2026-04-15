@@ -86,7 +86,7 @@ def DeferralRPS(
         # Calculate how many months will it take to pay off the Deferred Profit and Takaful amounts.
         while True:
             if distributionMonths > 360:
-                raise ValueError("Installment too low to cater to deferrment with the given Profit Rate.")
+                raise ValueError("Installment too low to cater to deferrment with the given Profit and Takaful Rates.")
 
 
             rps_copy = deepcopy(rps)
