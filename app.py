@@ -88,6 +88,10 @@ def DeferralRPS(
 
         # Calculate how many months will it take to pay off the Deferred Profit and Takaful amounts.
         while True:
+            if distributionMonths > 360:
+                raise ValueError("Installment too low to cater to deferrment with the given Profit Rate.")
+
+
             rps_copy = deepcopy(rps)
             for i in range(0,distributionMonths):
                 year = FirstEMIYear + ((FirstEMIMonth + (i-1))//12)
@@ -147,9 +151,6 @@ def DeferralRPS(
                 month = ((FirstEMIMonth + (i-1)) % 12) + 1
                 day = PayDay
                 rps['Date'].append(date(year, month, day))  
-                print("Year: ", year, " Month: ", month, " Day: ", day)
-                print("Date = ", rps['Date'][-1])
-                print("Previous Date = ", rps['Date'][-2])
                 
                 rps['Days'].append((rps['Date'][-1] - rps['Date'][-2]).days)
                 
