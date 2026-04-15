@@ -35,11 +35,10 @@ def main():
     TakafulFactor = (st.number_input(label = "Please input the Takaful Rate in Monthly Percentage terms", min_value = 0.00, format="%0.2f", value = 5.5))/100
     GracePeriodMonths = st.number_input(label = "Please input the Grace Period in months", min_value = 0, max_value = 36, value = 3, step = 1)
 
-
+    generate = st.button(label = "Generate Repayment Schedule")
     
-
-    
-    def generate_rps():
+    if generate:
+        st.write("Generating Repayment Schedule...")
         df_final = OfflineTesting.DeferralRPS(FinanceAmount = FinanceAmount,
                                               ProfitRate = ProfitRate,
                                               PayDay = payday,
@@ -51,11 +50,5 @@ def main():
 
         st.write(df_final)
         st.write(df_final.iloc[:,3:-1].sum())
-
-    generate = st.button(label = "Generate Repayment Schedule", on_click = generate_rps)
-
-
-
-    # st.write(alsalamfinance.goalSeek().set_index('SNo'))
 
 main()
