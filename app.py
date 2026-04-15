@@ -27,12 +27,12 @@ def main():
     
     
     FinanceAmount = st.number_input(label = "Please input the Finance Amount", min_value = 0.001, format="%0.3f", step = 0.001)
-    ProfitRate = st.number_input(label = "Please input the annual Profit Rate", min_value = 0.00, format="%0.2f", value = 5.5)
+    ProfitRate = (st.number_input(label = "Please input the annual Profit Rate in Percentage terms", min_value = 0.00, format="%0.2f", value = 5.0))/100
     payday = st.number_input(label = "Please define the date for monthly EMI payments", min_value = 1, max_value = 28, value = 1, step = 1)
     disbursement_date = st.date_input(label = "Please define the Disbursement Date.", value = None)
     disbursement_date_string = str(disbursement_date).replace("-","")   
     EMI = st.number_input(label = "Please input the EMI", min_value = 0.001, format="%0.3f", step = 0.001)
-    TakafulFactor = st.number_input(label = "Please input the Takaful Rate", min_value = 0.00, format="%0.2f", value = 5.5)
+    TakafulFactor = (st.number_input(label = "Please input the Takaful Rate in Monthly Percentage terms", min_value = 0.00, format="%0.2f", value = 5.5))/100
     GracePeriodMonths = st.number_input(label = "Please input the Grace Period in months", min_value = 0, max_value = 36, value = 3, step = 1)
 
 
