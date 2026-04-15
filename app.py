@@ -47,6 +47,7 @@ def main():
                                               TakafulFactor = TakafulFactor,
                                               GracePeriodMonths = GracePeriodMonths,
                                               repaymentMethod = "Deferral").set_index("SNo")
+        st.write("Done! Below is the Repayment Schedule:")
 
         st.write(df_final)
         st.write(df_final.iloc[:,3:-1].sum())
