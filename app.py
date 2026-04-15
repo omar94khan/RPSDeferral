@@ -194,7 +194,6 @@ def main():
     payday = st.number_input(label = "Please define the date for monthly EMI payments", min_value = 1, max_value = 28, value = 1, step = 1)
     disbursement_date = st.date_input(label = "Please define the Disbursement Date.")
     disbursement_date_string = str(disbursement_date).replace("-","")   
-    st.write("Disbursement Date: ", disbursement_date_string)
     EMI = st.number_input(label = "Please input the EMI", min_value = 0.001, format="%0.3f", step = 0.001, value = 100.000)
     TakafulFactor = (st.number_input(label = "Please input the Takaful Rate in Monthly Percentage terms", min_value = 0.00, format="%0.2f", value = 5.5))/100
     GracePeriodMonths = st.number_input(label = "Please input the Grace Period in months", min_value = 0, max_value = 36, value = 3, step = 1)
@@ -203,6 +202,15 @@ def main():
     
     if generate:
         st.write("Generating Repayment Schedule...")
+        st.write("Parameters selected:")
+        st.write(f"Finance Amount: {FinanceAmount}")
+        st.write(f"Profit Rate: {ProfitRate}")
+        st.write(f"Payday: {payday}")
+        st.write(f"Disbursement Date: {disbursement_date_string}")
+        st.write(f"EMI: {EMI}")
+        st.write(f"Takaful Factor: {TakafulFactor}")
+        st.write(f"Grace Period Months: {GracePeriodMonths}")
+        st.write(f"Repayment Method: Deferral")
         df_final = DeferralRPS(FinanceAmount = FinanceAmount,
                                               ProfitRate = ProfitRate,
                                               PayDay = payday,
