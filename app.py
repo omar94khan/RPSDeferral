@@ -202,18 +202,22 @@ def main():
     generate = st.button(label = "Generate Repayment Schedule")
     
     if generate:
-        st.write("Generating Repayment Schedule...")
-        df_final = DeferralRPS(FinanceAmount = FinanceAmount,
-                                              ProfitRate = ProfitRate,
-                                              PayDay = payday,
-                                              DisbursementDate = disbursement_date_string,
-                                              EMI = EMI,
-                                              TakafulFactor = TakafulFactor,
-                                              GracePeriodMonths = GracePeriodMonths,
-                                              repaymentMethod = "Deferral").set_index("SNo")
-        st.write("Done! Below is the Repayment Schedule:")
+        try:
+            st.write("Generating Repayment Schedule...")
+            df_final = DeferralRPS(FinanceAmount = FinanceAmount,
+                                                ProfitRate = ProfitRate,
+                                                PayDay = payday,
+                                                DisbursementDate = disbursement_date_string,
+                                                EMI = EMI,
+                                                TakafulFactor = TakafulFactor,
+                                                GracePeriodMonths = GracePeriodMonths,
+                                                repaymentMethod = "Deferral").set_index("SNo")
+            st.write("Done! Below is the Repayment Schedule:")
 
-        st.write(df_final)
-        st.write(df_final.iloc[:,3:-1].sum())
+            st.write(df_final)
+            st.write(df_final.iloc[:,3:-1].sum())
+        except Exception as e:
+            st.write("An error occurred while generating the Repayment Schedule. Please check the input values and try again.")
+            st.write("Error details: ", e)
 
 main()
