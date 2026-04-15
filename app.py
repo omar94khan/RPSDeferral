@@ -202,7 +202,7 @@ def main():
     
     if generate:
         st.write("Generating Repayment Schedule...")
-        df_final = OfflineTesting.DeferralRPS(FinanceAmount = FinanceAmount,
+        df_final = DeferralRPS(FinanceAmount = FinanceAmount,
                                               ProfitRate = ProfitRate,
                                               PayDay = payday,
                                               DisbursementDate = disbursement_date_string,
